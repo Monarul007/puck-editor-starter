@@ -1,73 +1,88 @@
-# React + TypeScript + Vite
+# Puck Editor - Elementor-Style Visual Page Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Puck Editor is a powerful, embeddable drag-and-drop visual page builder built on top of the [Puck](https://puckeditor.com/) framework. It enables non-technical users and developers to create responsive, pixel-perfect web pages using a rich library of pre-built components.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Drag-and-Drop Interface**: Intuitive two-panel layout with a component panel and live canvas.
+- **Responsive Layout System**: Section, Container, and Column components with per-breakpoint controls (Desktop, Tablet, Mobile).
+- **Rich Component Library**: Heading, Text, Image, Video, Button, Divider, Spacer, and Icon.
+- **Tiptap Rich Text**: Inline editing with full formatting, stored as JSON for maximum flexibility.
+- **Interactive Elements**: Embla Carousel slider, Accordions, and Tabs.
+- **Dynamic Content**: Repeated sections powered by REST API data binding and field mapping.
+- **Advanced Controls**: Granular spacing (margin/padding), typography, and color pickers.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18.3.1**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS v4**
+- **@measured/puck**
+- **Tiptap**
+- **TanStack React Query**
+- **Zustand**
+- **Lucide React**
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18 or 20+
+- npm 9+
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Step-by-Step Guide
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd puck-editor
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the editor**:
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Available Scripts
+
+- `npm run dev`: Starts the Vite development server.
+- `npm run build`: Compiles the project using TypeScript and Vite for production.
+- `npm run test`: Runs unit tests using Vitest.
+- `npm run lint`: Checks for linting errors using ESLint.
+- `npm run preview`: Locally previews the production build.
+- `npx playwright test`: Runs end-to-end tests.
+
+## Project Structure
+
+```text
+src/
+├── puck/           # Puck configuration and custom logic
+│   ├── components/ # Visual components (Heading, Slider, etc.)
+│   ├── fields/     # Custom field components (Color, Spacing, etc.)
+│   └── config.tsx  # Central Puck registry
+├── editor/         # Custom editor shell and UI components
+├── hooks/          # Shared React hooks
+├── utils/          # Helper functions and utilities
+└── App.tsx         # Main entry component
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Contributing
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Please ensure all tests pass before submitting a pull request:
+```bash
+npm run test
+npx playwright test
 ```
+
+## License
+
+MIT
