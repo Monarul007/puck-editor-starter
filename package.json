@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@measured/puck": "^0.17.4",
+    "@measured/puck": "^0.20.2",
     "@tanstack/react-query": "^5.90.21",
     "@tiptap/html": "^3.20.0",
     "@tiptap/pm": "^3.20.0",

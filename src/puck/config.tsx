@@ -33,6 +33,14 @@ import { Accordion } from "./components/Accordion";
 import type { AccordionProps } from "./components/Accordion";
 import { Badge } from "./components/Badge";
 import type { BadgeProps } from "./components/Badge";
+import { Grid } from "./components/Grid";
+import type { GridProps } from "./components/Grid";
+import { GridItem } from "./components/GridItem";
+import type { GridItemProps } from "./components/GridItem";
+import { Flex } from "./components/Flex";
+import type { FlexProps } from "./components/Flex";
+import { FlexItem } from "./components/FlexItem";
+import type { FlexItemProps } from "./components/FlexItem";
 import { SpacingField } from "./fields/SpacingField";
 import { ColorField } from "./fields/ColorField";
 import { TypographyField } from "./fields/TypographyField";
@@ -59,6 +67,10 @@ export type Props = {
   Tabs: TabsProps;
   Accordion: AccordionProps;
   Badge: BadgeProps;
+  Grid: GridProps;
+  GridItem: GridItemProps;
+  Flex: FlexProps;
+  FlexItem: FlexItemProps;
 };
 
 export const config: Config<Props> = {
@@ -446,6 +458,78 @@ export const config: Config<Props> = {
         color: "#374151",
       },
       render: (props) => <Badge {...props} />,
+    },
+    Grid: {
+      fields: {
+        columns: { type: "number", min: 1, max: 12 },
+        gap: { type: "text" },
+      },
+      defaultProps: {
+        columns: 3,
+        gap: "16px",
+      },
+      render: (props) => <Grid {...props} />,
+    },
+    GridItem: {
+      fields: {
+        columns: { type: "number", min: 1, max: 12 },
+        rows: { type: "number", min: 1, max: 12 },
+      },
+      defaultProps: {
+        columns: 1,
+        rows: 1,
+      },
+      inline: true,
+      render: (props) => <GridItem {...props} />,
+    },
+    Flex: {
+      fields: {
+        direction: {
+          type: "select",
+          options: [
+            { label: "Row", value: "row" },
+            { label: "Column", value: "column" },
+          ],
+        },
+        gap: { type: "text" },
+        justifyContent: {
+          type: "select",
+          options: [
+            { label: "Start", value: "start" },
+            { label: "Center", value: "center" },
+            { label: "End", value: "end" },
+            { label: "Between", value: "space-between" },
+          ],
+        },
+        alignItems: {
+          type: "select",
+          options: [
+            { label: "Start", value: "start" },
+            { label: "Center", value: "center" },
+            { label: "End", value: "end" },
+            { label: "Stretch", value: "stretch" },
+          ],
+        },
+      },
+      defaultProps: {
+        direction: "row",
+        gap: "16px",
+      },
+      render: (props) => <Flex {...props} />,
+    },
+    FlexItem: {
+      fields: {
+        flexGrow: { type: "number" },
+        flexShrink: { type: "number" },
+        flexBasis: { type: "text" },
+      },
+      defaultProps: {
+        flexGrow: 0,
+        flexShrink: 1,
+        flexBasis: "auto",
+      },
+      inline: true,
+      render: (props) => <FlexItem {...props} />,
     },
   },
 };
