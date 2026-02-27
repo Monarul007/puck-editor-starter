@@ -75,6 +75,18 @@ export const TypographyField: React.FC<TypographyFieldProps> = ({
           />
         </div>
         <div className="space-y-1">
+          <label className="text-[10px] text-gray-400 uppercase">Letter Spacing</label>
+          <input
+            type="text"
+            value={value.letterSpacing}
+            onChange={(e) => updateField("letterSpacing", e.target.value)}
+            className="w-full text-xs border rounded p-1"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-1">
           <label className="text-[10px] text-gray-400 uppercase">Align</label>
           <div className="flex border rounded overflow-hidden">
             {(["left", "center", "right", "justify"] as const).map((a) => (
@@ -90,6 +102,18 @@ export const TypographyField: React.FC<TypographyFieldProps> = ({
               </button>
             ))}
           </div>
+        </div>
+        <div className="space-y-1">
+          <label className="text-[10px] text-gray-400 uppercase">Transform</label>
+          <select
+            value={value.textTransform}
+            onChange={(e) => updateField("textTransform", e.target.value)}
+            className="w-full text-xs border rounded p-1"
+          >
+            {["none", "uppercase", "lowercase", "capitalize"].map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
         </div>
       </div>
 

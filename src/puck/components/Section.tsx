@@ -7,6 +7,8 @@ export interface SectionProps {
   minHeight?: string;
   padding?: any;
   background?: string;
+  position?: "static" | "relative" | "absolute" | "fixed" | "sticky";
+  zIndex?: number;
 }
 
 export const Section: React.FC<SectionProps> = ({
@@ -15,6 +17,8 @@ export const Section: React.FC<SectionProps> = ({
   minHeight,
   padding,
   background,
+  position = "static",
+  zIndex,
 }) => {
   const paddingStyle = padding
     ? `${padding.top}${padding.unit} ${padding.right}${padding.unit} ${padding.bottom}${padding.unit} ${padding.left}${padding.unit}`
@@ -27,6 +31,8 @@ export const Section: React.FC<SectionProps> = ({
         minHeight,
         padding: paddingStyle,
         backgroundColor: background,
+        position,
+        zIndex,
       }}
     >
       <div

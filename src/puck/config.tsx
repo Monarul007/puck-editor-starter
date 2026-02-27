@@ -31,6 +31,8 @@ import { Tabs } from "./components/Tabs";
 import type { TabsProps } from "./components/Tabs";
 import { Accordion } from "./components/Accordion";
 import type { AccordionProps } from "./components/Accordion";
+import { Badge } from "./components/Badge";
+import type { BadgeProps } from "./components/Badge";
 import { SpacingField } from "./fields/SpacingField";
 import { ColorField } from "./fields/ColorField";
 import { TypographyField } from "./fields/TypographyField";
@@ -56,6 +58,7 @@ export type Props = {
   DynamicSection: DynamicSectionProps;
   Tabs: TabsProps;
   Accordion: AccordionProps;
+  Badge: BadgeProps;
 };
 
 export const config: Config<Props> = {
@@ -81,6 +84,17 @@ export const config: Config<Props> = {
             <ColorField value={value as any} onChange={onChange} label="Background" />
           ),
         },
+        position: {
+          type: "select",
+          options: [
+            { label: "Static", value: "static" },
+            { label: "Relative", value: "relative" },
+            { label: "Absolute", value: "absolute" },
+            { label: "Fixed", value: "fixed" },
+            { label: "Sticky", value: "sticky" },
+          ],
+        },
+        zIndex: { type: "number" },
       },
       defaultProps: {
         columns: 1,
@@ -117,6 +131,21 @@ export const config: Config<Props> = {
             <ColorField value={value as any} onChange={onChange} label="Background" />
           ),
         },
+        position: {
+          type: "select",
+          options: [
+            { label: "Static", value: "static" },
+            { label: "Relative", value: "relative" },
+            { label: "Absolute", value: "absolute" },
+            { label: "Fixed", value: "fixed" },
+            { label: "Sticky", value: "sticky" },
+          ],
+        },
+        top: { type: "text" },
+        right: { type: "text" },
+        bottom: { type: "text" },
+        left: { type: "text" },
+        zIndex: { type: "number" },
       },
       defaultProps: {
         display: "block",
@@ -392,6 +421,31 @@ export const config: Config<Props> = {
         items: [{ title: "Item 1" }],
       },
       render: (props) => <Accordion {...props} />,
+    },
+    Badge: {
+      fields: {
+        text: { type: "text" },
+        href: { type: "text" },
+        color: {
+          type: "custom",
+          render: ({ value, onChange }) => (
+            <ColorField value={value as any} onChange={onChange} label="Text Color" />
+          ),
+        },
+        backgroundColor: {
+          type: "custom",
+          render: ({ value, onChange }) => (
+            <ColorField value={value as any} onChange={onChange} label="Background Color" />
+          ),
+        },
+        borderRadius: { type: "text" },
+      },
+      defaultProps: {
+        text: "Badge",
+        backgroundColor: "#f3f4f6",
+        color: "#374151",
+      },
+      render: (props) => <Badge {...props} />,
     },
   },
 };

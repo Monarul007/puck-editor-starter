@@ -7,6 +7,12 @@ export interface ContainerProps {
   margin?: any;
   background?: string;
   width?: string;
+  position?: "static" | "relative" | "absolute" | "fixed" | "sticky";
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+  zIndex?: number;
 }
 
 export const Container: React.FC<ContainerProps> = ({
@@ -15,6 +21,12 @@ export const Container: React.FC<ContainerProps> = ({
   margin,
   background,
   width = "100%",
+  position = "static",
+  top,
+  right,
+  bottom,
+  left,
+  zIndex,
 }) => {
   const getSpacingStyle = (spacing: any) =>
     spacing
@@ -29,6 +41,12 @@ export const Container: React.FC<ContainerProps> = ({
         margin: getSpacingStyle(margin),
         backgroundColor: background,
         width,
+        position,
+        top,
+        right,
+        bottom,
+        left,
+        zIndex,
       }}
     >
       <DropZone zone="content" />
